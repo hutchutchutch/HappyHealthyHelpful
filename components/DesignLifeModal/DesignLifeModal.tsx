@@ -71,7 +71,6 @@ export function DesignLifeModal({ isOpen, onClose }: DesignLifeModalProps) {
   };
 
   const hasSelectedItems = () => {
-    if (step === 1) return selectedPillars.length > 0;
     if (step === 2) return Object.values(categories).some(cats => cats.length > 0);
     if (step === 3) return Object.values(activities).some(acts => acts.length > 0);
     return false;
@@ -79,13 +78,10 @@ export function DesignLifeModal({ isOpen, onClose }: DesignLifeModalProps) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="flex flex-col bg-[#121212] border-white/20 text-white max-w-lg max-h-[85vh] p-0 gap-0 rounded-2xl overflow-hidden">
+      <DialogContent className="flex flex-col bg-[#121212] border-white/20 text-white max-w-[80vw] w-[80vw] max-h-[85vh] p-0 gap-0 rounded-[32px] overflow-hidden">
         <div className="p-6 overflow-y-auto">
           {step === 1 && (
             <StepOne
-              selectedPillars={selectedPillars}
-              onAddPillar={handleAddPillar}
-              onRemovePillar={handleRemovePillar}
             />
           )}
           {step === 2 && (
@@ -107,23 +103,23 @@ export function DesignLifeModal({ isOpen, onClose }: DesignLifeModalProps) {
         </div>
 
         <div className="p-4 border-t border-white/10 mt-auto">
-          <div className="flex justify-between gap-3">
+          <div className="flex justify-end gap-3">
             {step > 1 && (
               <Button
                 variant="outline"
                 onClick={handleBack}
-                className="w-full bg-white/5 hover:bg-white/10 border-white/20 text-white rounded-xl"
+                className="w-24 bg-white/5 hover:bg-white/10 border-white/20 text-white rounded-[16px]"
               >
                 Back
               </Button>
             )}
-            {hasSelectedItems() && (
+            {(step === 1 || hasSelectedItems()) && (
               <Button
                 onClick={step === 3 ? () => {} : handleNext}
-                className="w-full gradient-shadow text-base rounded-xl bg-[#121212] hover:bg-[#1a1a1a] transition-colors"
+                className="w-24 gradient-shadow text-base rounded-[16px] bg-[#121212] hover:bg-[#1a1a1a] transition-colors animate-fadeIn"
               >
                 <span className="gradient-text">
-                  {step === 3 ? "Generate Design" : "Next"}
+                  {step === 3 ? "Generate" : "Next"}
                 </span>
               </Button>
             )}

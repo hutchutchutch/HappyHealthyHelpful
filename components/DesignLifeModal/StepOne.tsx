@@ -1,50 +1,50 @@
 "use client";
 
 import { DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { PillarInput } from "./PillarInput";
-import { Badge } from "@/components/ui/badge";
-import { X } from "lucide-react";
 
-interface StepOneProps {
-  selectedPillars: string[];
-  onAddPillar: (pillar: string) => void;
-  onRemovePillar: (pillar: string) => void;
-}
-
-export function StepOne({ selectedPillars, onAddPillar, onRemovePillar }: StepOneProps) {
+export function StepOne() {
   return (
     <div className="space-y-6">
       <div>
         <DialogTitle className="text-xl font-semibold">
-          Step 1: Choose your pillars
+          Understand the Pillars
         </DialogTitle>
         <DialogDescription className="text-white/70">
-          These are the core categories that shape your approach to a fulfilling life.
+          Taking simple ideas seriously, in a format that makes it easy
         </DialogDescription>
       </div>
 
-      {/* Selected Pillars */}
-      {selectedPillars.length > 0 && (
-        <div className="flex flex-wrap gap-2">
-          {selectedPillars.map((pillar) => (
-            <Badge
-              key={pillar}
-              className="bg-[#3B82F6] hover:bg-[#3B82F6]/90 text-white px-3 py-1"
-            >
-              {pillar}
-              <button
-                onClick={() => onRemovePillar(pillar)}
-                className="ml-2 hover:text-white/70"
-              >
-                <X className="h-3 w-3" />
-              </button>
-            </Badge>
-          ))}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="p-4 rounded-[20px] bg-blue-500/20 border border-blue-500 min-w-[250px] max-w-[400px] w-full">
+          <h3 className="font-semibold text-blue-500 mb-2">Happy</h3>
+          <p className="text-sm text-white/70">
+            Activities that bring joy, meaning and connection to your life. These fuel your emotional wellbeing and help you thrive.
+          </p>
         </div>
-      )}
 
-      {/* Pillar Input and Suggestions */}
-      <PillarInput onAddPillar={onAddPillar} />
+        <div className="p-4 rounded-[20px] bg-green-500/20 border border-green-500 min-w-[250px] max-w-[400px] w-full">
+          <h3 className="font-semibold text-green-500 mb-2">Healthy</h3>
+          <p className="text-sm text-white/70">
+            Habits that support your physical and mental health. A strong foundation enables everything else.
+          </p>
+        </div>
+
+        <div className="p-4 rounded-[20px] bg-purple-500/20 border border-purple-500 min-w-[250px] max-w-[400px] w-full">
+          <h3 className="font-semibold text-purple-500 mb-2">Helpful</h3>
+          <p className="text-sm text-white/70">
+            Ways you contribute to others and make a positive impact. Giving creates purpose and deepens relationships.
+          </p>
+        </div>
+
+        <div className="p-4 rounded-[20px] bg-gray-500/20 border border-gray-500 min-w-[250px] max-w-[400px] w-full">
+          <h3 className="font-semibold text-gray-500 mb-2">Other</h3>
+          <p className="text-sm text-white/70">
+            Distractions, impulses and unfulfilling tasks that lead to lethargy and disconnection.
+            <br /><br />
+            <span className="font-bold">we don't <i>shame</i> these activities/categories, we just minimize them 🙂</span>
+          </p>
+        </div>
+      </div>
     </div>
   );
 }
