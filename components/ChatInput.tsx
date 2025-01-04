@@ -9,10 +9,10 @@ import { Button } from "@/components/ui/button";
 import { cn } from '@/lib/utils';
 
 const PLACEHOLDER_PHRASES = [
-  "What the hell is this?",
-  "How does this help anyone?",
-  "Why did you spend so much time on this?",
-  "What drugs did you take?"
+  "When's the last time I played?",
+  "What are my current points of focus?",
+  "Who's the last comedian I discovered?",
+  "Why is happy healthy helpful important?"
 ];
 
 interface ChatInputProps {
