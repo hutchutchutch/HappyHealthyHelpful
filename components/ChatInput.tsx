@@ -10,9 +10,10 @@ import { cn } from '@/lib/utils';
 
 const PLACEHOLDER_PHRASES = [
   "When's the last time I played?",
-  "What are my current points of focus?",
+  "What are my current areas of focus?",
   "Who's the last comedian I discovered?",
-  "Why is happy healthy helpful important?"
+  "Why is happy healthy helpful important?",
+  "What's the last thing I read?",
 ];
 
 interface ChatInputProps {
