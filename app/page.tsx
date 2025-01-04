@@ -43,7 +43,7 @@ export default function Home() {
             className="gradient-shadow text-base md:text-lg px-6 md:px-8 h-[48px] md:h-[60px] rounded-2xl bg-[#121212] hover:bg-[#1a1a1a] transition-colors flex items-center justify-center"
             onClick={() => setIsDesignModalOpen(true)}
           >
-            <span className="gradient-text">Design Yours</span>
+            <span className="gradient-text">Create Yours</span>
           </Button>
         </div>
 
