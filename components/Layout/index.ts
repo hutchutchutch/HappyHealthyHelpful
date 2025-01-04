@@ -1,0 +1,1 @@
+export { TopGradient, BottomGradient } from './Gradients';

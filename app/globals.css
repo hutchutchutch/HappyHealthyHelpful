@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 7%;
+    --foreground: 0 0% 98%;
+  }
+}
+
+@keyframes pulse {
+  0% { opacity: 0.15; }
+  50% { opacity: 0.25; }
+  100% { opacity: 0.15; }
+}
+
+.gradient-text {
+  background: linear-gradient(
+    90deg,
+    #3B82F6 0%,
+    #10B981 100%
+  );
+  background-size: 200% auto;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: gradient 3s linear infinite;
+}
+
+.gradient-shadow {
+  position: relative;
+}
+
+.gradient-shadow::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(
+    90deg,
+    #3B82F6 0%,
+    #10B981 100%
+  );
+  background-size: 200% auto;
+  border-radius: 1rem;
+  z-index: -1;
+  animation: gradient 3s linear infinite;
+  filter: blur(8px);
+  opacity: 0.5;
+}
