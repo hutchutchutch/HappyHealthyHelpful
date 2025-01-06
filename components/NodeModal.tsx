@@ -44,15 +44,6 @@ export default function NodeModal({ isOpen, onClose, node, details, childNodes }
                 {child.id}
               </Badge>
             ))}
-            {isPrimaryNode && (
-              <Badge
-                variant="outline"
-                className="bg-transparent text-white border-white/20 hover:bg-white/10 cursor-pointer shadow-lg flex items-center gap-1"
-              >
-                <Plus className="h-3 w-3" />
-                Add category
-              </Badge>
-            )}
           </div>
         </div>
 
