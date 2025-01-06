@@ -29,7 +29,7 @@ export function ChatMessages({ messages }: ChatMessagesProps) {
               message="I'm processing your message..." 
               isUser={false} 
             />
-            <Card className="bg-[#1a1a1a] border-white/10 text-white">
+            <Card className="bg-[#1a1a1a] border-white/10 text-white rounded-[20px]">
               <CardHeader>
                 <CardTitle className="text-lg">Suggested Actions</CardTitle>
                 <CardDescription className="text-white/70">

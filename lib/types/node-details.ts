@@ -6,5 +6,5 @@ export interface NodeGoal {
 export interface NodeDetails {
   id: string;
   description: string;
-  goals: NodeGoal[];
+  activities?: Record<string, string[]>;
 }
