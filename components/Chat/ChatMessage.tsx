@@ -10,11 +10,11 @@ interface ChatMessageProps {
 export function ChatMessage({ message, isUser = true }: ChatMessageProps) {
   return (
     <div className={cn(
-      "relative max-w-[80%] mb-4",
-      isUser ? "ml-auto" : "mr-auto"
+      "relative max-w-[80%] mb-4 flex",
+      isUser ? "ml-auto justify-end" : "mr-auto justify-start"
     )}>
       <div className={cn(
-        "relative px-4 py-2 rounded-2xl",
+        "relative px-4 py-2 rounded-2xl inline-block",
         "break-words text-sm md:text-base",
         isUser ? 
           "bg-[#0B93F6] text-white" : 
