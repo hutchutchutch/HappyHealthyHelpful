@@ -7,14 +7,34 @@ import { BlurredHeader } from "@/components/BlurredHeader";
 import { ChatMessages } from "@/components/Chat/ChatMessages";
 import { DesignLifeModal } from "@/components/DesignLifeModal";
 import { graphData } from "@/lib/data/graph-data";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { GraphService } from "@/lib/langchain/graphs";
 
 export default function Home() {
-  const [messages, setMessages] = useState<string[]>([]);
+  const [messages, setMessages] = useState<Array<{text: string; response?: string}>>([]);
   const [isDesignModalOpen, setIsDesignModalOpen] = useState(false);
+  const graphService = new GraphService();
 
-  const handleChatSubmit = (message: string) => {
-    setMessages(prev => [...prev, message]);
+  useEffect(() => {
+    graphService.initialize().catch(console.error);
+  }, []);
+
+  const handleChatSubmit = async (message: string) => {
+    // Add user message immediately
+    setMessages(prev => [...prev, { text: message }]);
+
+    try {
+      const result = await graphService.processMessage(message);
+      
+      // Update the last message with the AI response
+      setMessages(prev => {
+        const newMessages = [...prev];
+        newMessages[newMessages.length - 1].response = result.response;
+        return newMessages;
+      });
+    } catch (error) {
+      console.error('Error processing message:', error);
+    }
   };
 
   return (

@@ -5,7 +5,7 @@ import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/ca
 import { useEffect, useRef } from "react";
 
 interface ChatMessagesProps {
-  messages: string[];
+  messages: Array<{text: string; response?: string}>;
 }
 
 export function ChatMessages({ messages }: ChatMessagesProps) {
@@ -24,19 +24,21 @@ export function ChatMessages({ messages }: ChatMessagesProps) {
       <div className="flex flex-col justify-end min-h-full pb-4 space-y-3">
         {messages.map((message, index) => (
           <div key={index} className="space-y-3">
-            <ChatMessage message={message} isUser={true} />
+            <ChatMessage message={message.text} isUser={true} />
             <ChatMessage 
-              message="I'm processing your message..." 
+              message={message.response || "I'm processing your message..."} 
               isUser={false} 
             />
-            <Card className="bg-[#1a1a1a] border-white/10 text-white rounded-[20px]">
-              <CardHeader>
-                <CardTitle className="text-lg">Suggested Actions</CardTitle>
-                <CardDescription className="text-white/70">
-                  Here are some steps you might want to consider...
-                </CardDescription>
-              </CardHeader>
-            </Card>
+            {message.response && (
+              <Card className="bg-[#1a1a1a] border-white/10 text-white rounded-[20px]">
+                <CardHeader>
+                  <CardTitle className="text-lg">Suggested Actions</CardTitle>
+                  <CardDescription className="text-white/70">
+                    {message.response}
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+            )}
           </div>
         ))}
         <div ref={messagesEndRef} />
